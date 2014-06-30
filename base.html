@@ -1,0 +1,20 @@
+<!-- base.html -->
+<form ng-submit="addTask()">
+	<div class="form-group">
+		<input type="text" class="form-control" ng-model="newTask" placeholder="Add new task">
+	</div>
+</form>
+
+<ul class="list-unstyled">
+<li class="checkbox" ng-repeat="task in tasks | filter:stateFilter track by $index" ng-class="{completed: task.completed}">
+	<label>
+		<input type="checkbox" ng-model="task.completed"> {{task.title}}
+		<button class="btn btn-danger" ng-click="removeTask(task)">Remove</button>
+	</label>
+</li>
+</ul>
+
+<div class="btn-group">
+	<a ui-sref="base.done" class="btn btn-success">Completed</a>
+	<a ui-sref="base.todo" class="btn btn-default">To Do</a>
+</div>
