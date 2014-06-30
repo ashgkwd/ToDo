@@ -12,7 +12,11 @@
 <body ng-app="todoApp">
 	<div class="container">
 		<h1>Voila De TODO</h1>
-		<div ui-view="base"></div>
+		<div ui-view></div>
+		<div class="btn-group">
+			<a ui-sref="base.done" class="btn btn-success">Completed</a>
+			<a ui-sref="base.todo" class="btn btn-default">To Do</a>
+		</div>
 	</div>
 </body>
 </html>
