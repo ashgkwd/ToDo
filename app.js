@@ -5,7 +5,8 @@ angular.module('todoApp', ['ui.router'])
 	$stateProvider
 		.state('base', {
 			url: '/',
-			templateUrl: 'base.html'
+			templateUrl: 'base.html',
+			controller: 'baseCtrl'
 		})
 		.state('base.done', {
 			url: '/completed',
@@ -15,4 +16,20 @@ angular.module('todoApp', ['ui.router'])
 			url: '/todo',
 			templateUrl: 'base.html'
 		})
+})
+.controller('baseCtrl', function($scope, $state) {
+	$scope.tasks = []
+
+	$scope.addTask = function() {
+		var task = $scope.newTask.trim()
+		if(task.length) $scope.tasks.push({
+			"title":task,
+			"completed":false
+		})
+		$scope.newTask = ''
+	}
+
+	$scope.removeTask = function(task) {
+		$scope.tasks.splice($scope.tasks.indexOf(task), 1)
+	}
 })
