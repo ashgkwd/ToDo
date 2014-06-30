@@ -1,0 +1,8 @@
+.completed {
+	text-decoration: line-through;
+	color: grey;
+}
+
+.container {
+	max-width: 400px;
+}
