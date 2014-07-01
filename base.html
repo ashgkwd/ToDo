@@ -1,16 +1,9 @@
 <!-- base.html -->
-<link rel="stylesheet" type="text/css" href="base.css">
 <form ng-submit="addTask()">
 	<div class="form-group">
 		<input type="text" class="form-control" autofocus ng-model="newTask" placeholder="Add new task">
 	</div>
 </form>
 
-<ul class="list-unstyled">
-<li class="checkbox" ng-repeat="task in tasks | filter:stateFilter track by $index" ng-class="{completed: task.completed}">
-	<label>
-		<input type="checkbox" ng-model="task.completed"> {{task.title}} &emsp;
-		<button class="btn btn-xs btn-danger" ng-click="removeTask(task)">Remove</button>
-	</label>
-</li>
-</ul>
+<hr />
+<div ui-view></div>
