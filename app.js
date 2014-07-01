@@ -39,6 +39,14 @@ angular.module('todoApp', ['ui.router'])
 		$scope.newTask = ''
 	}
 
+	$scope.editTask = function(task) {
+		$scope.tasks[$scope.tasks.indexOf(task)].editing = true
+	}
+
+	$scope.doneEdit = function(task) {
+		$scope.tasks[$scope.tasks.indexOf(task)].editing = false
+	}
+
 	$scope.removeTask = function(task) {
 		$scope.tasks.splice($scope.tasks.indexOf(task), 1)
 	}
