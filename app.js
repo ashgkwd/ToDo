@@ -37,7 +37,6 @@ angular.module('todoApp', ['ui.router'])
 			"completed":false
 		})
 		$scope.newTask = ''
-		console.info($scope.tasks)
 	}
 
 	$scope.removeTask = function(task) {
@@ -45,14 +44,11 @@ angular.module('todoApp', ['ui.router'])
 	}
 })
 .controller('allCtrl', function($scope) {
-	console.log('doneCtrl is active')
 	$scope.stateFilter = null
 })
 .controller('doneCtrl', function($scope) {
-	console.log('doneCtrl is active')
 	$scope.stateFilter = {completed: true}
 })
 .controller('todoCtrl', function($scope) {
-	console.log('todoCtrl is active')
 	$scope.stateFilter = {completed:false}
 })

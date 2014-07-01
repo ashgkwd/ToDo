@@ -1,9 +1,13 @@
 <!-- Nested view. For list of tasks. -->
 <ul class="list-unstyled">
-<li class="checkbox" ng-repeat="task in tasks | filter:stateFilter" ng-class="{completed: task.completed}">
+<li class="checkbox" ng-repeat="task in tasks | filter:stateFilter">
+	<hr />
 	<label>
-		<input type="checkbox" ng-model="task.completed"> {{task.title}} &emsp;
-		<button class="btn btn-xs btn-danger" ng-click="removeTask(task)">Remove</button>
+		<input type="checkbox" ng-model="task.completed"> <span ng-class="{completed: task.completed}"> {{task.title}} </span> &emsp;
+		<div class="btn-group pull-right">
+			<button class="btn btn-xs btn-default" ng-click="editTask(task)">Edit</button>
+			<button class="btn btn-xs btn-danger" ng-click="removeTask(task)">Remove</button>
+		</div>
 	</label>
 </li>
 </ul>
