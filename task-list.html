@@ -1,17 +1,13 @@
 <!-- Nested view. For list of tasks. -->
 <ul class="list-unstyled">
-<li class="checkbox" ng-repeat="task in tasks | filter:stateFilter">
-	<hr />
-	<label>
-		<span ng-class="{completed: task.completed}" ng-dblclick="editTask(task)" ng-show="!task.editing"> <input type="checkbox" ng-model="task.completed"> {{task.title}} </span> 
+<li ng-repeat="task in tasks | filter:stateFilter" class="top-bar">
+	<span ng-class="{completed: task.completed}" ng-dblclick="editTask(task)" ng-show="!task.editing"> 
+		<input type="checkbox" ng-model="task.completed"> {{task.title}} &emsp;
+		<button class="button-close pure-button pull-right" ng-click="removeTask(task)" ng-show="!task.editing">&times;</button>
+	</span> 
 
-		<form ng-submit="doneEdit(task)" ng-show="task.editing">
-			<div class="form-group">
-				<input type="text" class="form-control" ng-blur="doneEdit(task)" ng-model="task.title">
-			</div>
-		</form>
-		&emsp;
-		<button class="btn btn-xs btn-danger pull-right" ng-click="removeTask(task)" ng-show="!task.editing">&times;</button>
-	</label>
+	<form ng-submit="doneEdit(task)" ng-show="task.editing" class="pure-form">
+		<input type="text" class="pure-input-1" ng-blur="doneEdit(task)" ng-model="task.title">
+	</form>
 </li>
 </ul>

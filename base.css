@@ -4,5 +4,33 @@
 }
 
 .container {
+	margin: 0 auto;
 	max-width: 400px;
+}
+
+.list-unstyled {
+	list-style: none;
+	padding: 0;
+}
+
+.top-bar {
+	padding-top: 10px;
+	padding-bottom: 10px;
+	border-top: 1px solid #ccc;
+}
+
+.button-close {
+	padding: 3px 5px;
+	background-color: white;
+	border-radius: 50%;
+	border: 1px solid transparent;
+}
+
+.button-close:hover {
+	border: 1px solid #eee;
+	background: white;
+}
+
+.pull-right {
+	float: right;
 }
