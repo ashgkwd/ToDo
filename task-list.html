@@ -2,7 +2,7 @@
 <ul class="list-unstyled">
 <li ng-repeat="task in tasks | filter:stateFilter" class="top-bar">
 	<span ng-class="{completed: task.completed}" ng-dblclick="editTask(task)" ng-show="!task.editing"> 
-		<input type="checkbox" ng-model="task.completed"> {{task.title}} &emsp;
+		<input type="checkbox" ng-model="task.completed" ng-change="doneEdit(task)"> {{task.title}} &emsp;
 		<button class="button-close pure-button pull-right" ng-click="removeTask(task)" ng-show="!task.editing">&times;</button>
 	</span> 
 

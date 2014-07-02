@@ -27,15 +27,19 @@ angular.module('todoApp', ['ui.router'])
 			controller: 'todoCtrl'
 		})
 })
-.controller('baseCtrl', function($scope) {
-	$scope.tasks = []
+.controller('baseCtrl', function($scope, todoStorage) {
+	$scope.tasks = todoStorage.get() || []
 
 	$scope.addTask = function() {
 		var task = $scope.newTask.trim()
-		if(task.length) $scope.tasks.push({
+		if(task.length) {
+			$scope.tasks.push({
 			"title":task,
 			"completed":false
-		})
+			})
+
+			todoStorage.put($scope.tasks)
+		}
 		$scope.newTask = ''
 	}
 
@@ -45,10 +49,12 @@ angular.module('todoApp', ['ui.router'])
 
 	$scope.doneEdit = function(task) {
 		$scope.tasks[$scope.tasks.indexOf(task)].editing = false
+		todoStorage.put($scope.tasks)
 	}
 
 	$scope.removeTask = function(task) {
 		$scope.tasks.splice($scope.tasks.indexOf(task), 1)
+		todoStorage.put($scope.tasks)
 	}
 })
 .controller('allCtrl', function($scope) {
@@ -59,4 +65,16 @@ angular.module('todoApp', ['ui.router'])
 })
 .controller('todoCtrl', function($scope) {
 	$scope.stateFilter = {completed:false}
+})
+.factory('todoStorage', function() {
+	var STORAGEID = 'ashish-gaikwad-store'
+	return {
+		get: function() {
+			return JSON.parse(localStorage.getItem(STORAGEID) || '[]')
+		},
+
+		put: function(tasks) {
+			localStorage.setItem(STORAGEID, JSON.stringify(tasks))
+		}
+	}
 })
