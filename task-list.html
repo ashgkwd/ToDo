@@ -3,7 +3,7 @@
 <li class="checkbox" ng-repeat="task in tasks | filter:stateFilter">
 	<hr />
 	<label>
-		<span ng-class="{completed: task.completed}" ng-show="!task.editing"> <input type="checkbox" ng-model="task.completed"> {{task.title}} </span> 
+		<span ng-class="{completed: task.completed}" ng-dblclick="editTask(task)" ng-show="!task.editing"> <input type="checkbox" ng-model="task.completed"> {{task.title}} </span> 
 
 		<form ng-submit="doneEdit(task)" ng-show="task.editing">
 			<div class="form-group">
@@ -11,11 +11,7 @@
 			</div>
 		</form>
 		&emsp;
-		<div class="btn-group pull-right">
-			<button class="btn btn-xs btn-default" ng-click="editTask(task)" ng-show="!task.editing">Edit</button>
-			<button class="btn btn-xs btn-success" ng-click="doneEdit(task)" ng-show="task.editing">Done</button>
-			<button class="btn btn-xs btn-danger" ng-click="removeTask(task)" ng-show="!task.editing">Remove</button>
-		</div>
+		<button class="btn btn-xs btn-danger pull-right" ng-click="removeTask(task)" ng-show="!task.editing">&times;</button>
 	</label>
 </li>
 </ul>
