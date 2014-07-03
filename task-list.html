@@ -11,3 +11,10 @@
 	</form>
 </li>
 </ul>
+
+<hr />
+<div class="btn-group">
+	<a ui-sref="base.all" class="pure-button">All <span class="badge">{{tasks.length}}</span></a>
+	<a ui-sref="base.done" class="pure-button">Completed <span class="badge">{{completedCount}}</span></a>
+	<a ui-sref="base.todo" class="pure-button">To Do <span class="badge">{{remainingCount}}</span></a>
+</div>

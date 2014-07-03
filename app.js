@@ -27,8 +27,17 @@ angular.module('todoApp', ['ui.router'])
 			controller: 'todoCtrl'
 		})
 })
-.controller('baseCtrl', function($scope, todoStorage) {
+.controller('baseCtrl', function($scope, $filter, todoStorage) {
 	$scope.tasks = todoStorage.get() || []
+
+	$scope.$watch('tasks', function(newValue, oldValue) {
+		var tasks = $scope.tasks
+		$scope.remainingCount = $filter('filter')(tasks, {completed:false}).length
+		$scope.completedCount = tasks.length - $scope.remainingCount
+		if (newValue !== oldValue) {
+			todoStorage.put(tasks)
+		}
+	}, true)
 
 	$scope.addTask = function() {
 		var task = $scope.newTask.trim()

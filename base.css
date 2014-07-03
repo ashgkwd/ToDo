@@ -34,3 +34,10 @@
 .pull-right {
 	float: right;
 }
+
+.badge {
+	border-radius: 50%;
+	background-color: white;
+	padding: 2px 4px;
+	font-size: small;
+}
