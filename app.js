@@ -1,8 +1,8 @@
 angular.module('todoApp', ['ui.router'])
 .config(function($stateProvider, $urlRouterProvider) {
 	$urlRouterProvider
-		.when('/', '/all')
-		.otherwise('/all')
+		//.when('/', '/all')
+		.otherwise('/')
 
 	$stateProvider
 		.state('base', {
@@ -12,17 +12,17 @@ angular.module('todoApp', ['ui.router'])
 			controller: 'baseCtrl'
 		})
 		.state('base.all', {
-			url: '/all',
+			url: '/',
 			templateUrl: 'task-list.html',
 			controller: 'allCtrl'
 		})
 		.state('base.done', {
-			url: '/completed',
+			url: '/',
 			templateUrl: 'task-list.html',
 			controller: 'doneCtrl'
 		})
 		.state('base.todo', {
-			url: '/todo',
+			url: '/',
 			templateUrl: 'task-list.html',
 			controller: 'todoCtrl'
 		})
